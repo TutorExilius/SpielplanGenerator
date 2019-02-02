@@ -52,9 +52,17 @@ std::vector<std::pair<T,T>> generatePlayingSchedule( std::vector<T> &members )
 	return generatePlayingSchedule;
 }
 
-int main()
+int main( int argc, char *argv[] )
 {
-	std::ifstream inFile{ R"(C:\Users\exi\Desktop\spieler.txt)" };
+	if( argc != 2 )
+	{
+		std::cerr << "Missing input file." << std::endl;
+		return -1;
+	}
+
+	std::string inputfile{ argv[1] };
+
+	std::ifstream inFile{ inputfile };
 
 	if( !inFile )
 	{
